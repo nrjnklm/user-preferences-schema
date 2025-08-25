@@ -1,6 +1,5 @@
 // schema.js
 const mongoose = require("mongoose");
-
 const { Schema, model } = mongoose;
 
 // Define the schema
@@ -13,30 +12,25 @@ const UserPreferencesSchema = new Schema(
       trim: true,
     },
     preferences: {
-      type: Object,
-      required: [true, "Preferences are required"],
-      default: {}, // ensures the object is initialized
-    },
-    "preferences.theme": {
-      type: String,
-      enum: ["light", "dark"],
-      default: "light",
-    },
-    "preferences.language": {
-      type: String,
-      default: "en",
-    },
-    "preferences.notifications": {
-      type: Object,
-      default: {}, // ensures notifications object is initialized
-    },
-    "preferences.notifications.email": {
-      type: Boolean,
-      default: true,
-    },
-    "preferences.notifications.sms": {
-      type: Boolean,
-      default: false,
+      theme: {
+        type: String,
+        enum: ["light", "dark"],
+        default: "light",
+      },
+      language: {
+        type: String,
+        default: "en",
+      },
+      notifications: {
+        email: {
+          type: Boolean,
+          default: true,
+        },
+        sms: {
+          type: Boolean,
+          default: false,
+        },
+      },
     },
   },
   {
